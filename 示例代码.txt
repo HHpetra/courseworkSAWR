@@ -1,0 +1,27 @@
+
+population=np.random.randint(0,2,(20,25*2))
+
+bitValue=np.logspace(-20,4,25,base=2)
+
+x1=np.dot(population[:,0:25],bitValue)
+x2=np.dot(population[:,25:50],bitValue)
+
+value=GoalFunction(x1,x2)
+
+value=GoalFunction(x1,x2)
+fitvalue=-np.log(value/5120)
+fitness=fitvalue/fitvalue.sum()
+
+index=np.random.choice(len(fitness),size=len(fitness),p=fitness)
+newPopulation=population[index]
+np.random.shuffle(newPopulation)
+
+variateSite=np.random.random(population.shape)<=rate
+population[variateSite]=np.where(population[variateSite]==1,0,1)
+
+
+##-----------------------------------------##
+triangularMatrix=np.tile(g[:,1],(k,1))
+for i in range(0,k):
+    triangularMatrix[:,i]+=np.roll(f[:,2],i)
+triangularMatrix=np.tril(triangularMatrix,0)
